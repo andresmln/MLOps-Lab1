@@ -1,25 +1,58 @@
 # MLOps Lab 1: Image Processing API & CLI
 
-![CI Status](AQUÍ_PEGA_TU_BADGE_DE_GITHUB)
+![CI Status](PASTE_YOUR_GITHUB_BADGE_HERE)
 
-Este repositorio contiene la solución para el Laboratorio 1 de la asignatura MLOps. El proyecto consiste en una herramienta Python para procesar imágenes (predicción de clase, redimensionado, escala de grises) accesible mediante **CLI** (Línea de Comandos) y **API REST** (FastAPI).
+This repository contains the solution for Lab 1 of the MLOps course. The project consists of a Python tool for image processing (class prediction, resizing, grayscale conversion, and flattening) accessible via both a **CLI** (Command Line Interface) and a **REST API** (FastAPI).
 
-## 🚀 Funcionalidades
+## 🚀 Features
 
-* **Predict:** Predice la clase de una imagen (mock).
-* **Resize:** Redimensiona una imagen a un ancho y alto específicos.
-* **Grayscale:** Convierte una imagen a blanco y negro.
-* **Flatten:** Aplana la matriz de la imagen a una lista de píxeles.
+* **Predict:** Predicts the class of a given image (mock implementation)
+* **Resize:** Resizes an image to specific width and height dimensions.
+* **Grayscale:** Converts an image to black and white (preprocessing).
+* **Flatten:** Flattens the image matrix into a 1D pixel list.
 
-## 🛠️ Requisitos e Instalación
+## 🛠️ Requirements & Installation
 
-Este proyecto utiliza **uv** para la gestión de dependencias.
+This project uses **uv** for dependency management and virtual environments.
+
+### Installation Steps
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <git@github.com:andresmln/MLOps-Lab1.git>
+    cd MLOps-Lab1
+    ```
+
+2.  **Install dependencies:**
+    You can use the Makefile provided:
+    ```bash
+    make install
+    ```
+    Or manually using `uv`:
+    ```bash
+    uv sync
+    ```
+
+## 💻 Usage
+
+### 1. Running the API
+To start the local server:
 
 ```bash
-# 1. Clonar el repositorio
-git clone <TU_URL_DEL_REPO>
-cd MLOps-Lab1
+uv run python -m api.api
+```
+### 2. Using Cli
 
-# 2. Instalar dependencias
-make install
-# O manualmente: uv sync
+```bash
+# Predict class
+uv run python -m cli.cli predict "path/to/image.jpg"
+
+# Resize image (e.g., to 100x100)
+uv run python -m cli.cli resize "path/to/image.jpg" 100 100
+
+# Convert to grayscale
+uv run python -m cli.cli grayscale "path/to/image.jpg"
+
+# Flatten image
+uv run python -m cli.cli flatten "path/to/image.jpg"
+```

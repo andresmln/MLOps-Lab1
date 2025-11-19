@@ -24,19 +24,15 @@ jobs:
     - name: Set up Python
       run: uv python install 3.12.4
 
-    # 4. Instalar las dependencias y el entorno virtual
+   # 1. INSTALAR las dependencias
     - name: Install dependencies
-      run: uv sync --all-extras --dev
+      run: make install
 
-    # 5. Ejecutar Linting (Pylint) para buscar errores de estilo
-    # Usamos 'make lint' si tienes el Makefile, o el comando directo
-    - name: Lint with pylint
-      run: uv run pylint mylib api cli
+    # 2. REFACTOR: Formato + Linting (Usa 'make refactor')
+    - name: Check Code Quality (Format & Lint)
+      run: make refactor
 
-    # 6. Verificar formato (Black)
-    - name: Check formatting with Black
-      run: uv run black --check .
+    # 3. TEST (Usa 'make test')
+    - name: Run Tests
+      run: make test
 
-    # 7. Ejecutar los Tests
-    - name: Test with pytest
-      run: uv run -m pytest
