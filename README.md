@@ -1,12 +1,12 @@
 # MLOps Lab 1: Image Processing API & CLI
 
-![CI Status](PASTE_YOUR_GITHUB_BADGE_HERE)
+[![CI Pipeline](https://github.com/andresmln/MLOps-Lab1/actions/workflows/ci.yml/badge.svg)](https://github.com/andresmln/MLOps-Lab1/actions/workflows/ci.yml)
 
-This repository contains the solution for Lab 1 of the MLOps course. The project consists of a Python tool for image processing (class prediction, resizing, grayscale conversion, and flattening) accessible via both a **CLI** (Command Line Interface) and a **REST API** (FastAPI).
+This repository contains the solution for Lab 1 of the MLOps subject of the UPNA Master's Degree in Machine Learning. The project consists of a Python tool for image processing (class prediction, resizing, grayscale conversion, and flattening) accessible via both a **CLI** (Command Line Interface) and a **REST API** (FastAPI).
 
 ## 🚀 Features
 
-* **Predict:** Predicts the class of a given image (mock implementation)
+* **Predict:** Predicts the class of a given image.
 * **Resize:** Resizes an image to specific width and height dimensions.
 * **Grayscale:** Converts an image to black and white (preprocessing).
 * **Flatten:** Flattens the image matrix into a 1D pixel list.
@@ -56,3 +56,44 @@ uv run python -m cli.cli grayscale "path/to/image.jpg"
 # Flatten image
 uv run python -m cli.cli flatten "path/to/image.jpg"
 ```
+## 🧪 Development & Quality (Makefile)
+
+According to MLOps best practices, a `Makefile` is included to automate quality checks and testing.
+
+```bash
+# Run tests (Pytest)
+make test
+
+# Check code quality (Linting + Formatting)
+make refactor
+
+# Run everything (Install + Quality + Tests)
+make all
+```
+## 📂 Project Structure
+MLOps-Lab1/
+├── .github/
+│   └── workflows/
+│       └── ci.yml          # Configuración del Pipeline de CI (GitHub Actions)
+├── api/
+│   ├── __init__.py         # (Opcional, pero recomendado)
+│   └── api.py              # Código de la API (FastAPI)
+├── cli/
+│   ├── __init__.py         # (Opcional)
+│   └── cli.py              # Código de la Línea de Comandos (Click)
+├── mylib/
+│   ├── __init__.py         # Marca la carpeta como paquete Python
+│   └── logic.py            # Lógica principal (predict, resize, grayscale, flatten)
+├── templates/
+│   └── home.html           # Página de inicio para la API
+├── tests/
+│   ├── __init__.py         # (Opcional)
+│   ├── test_api.py         # Tests de integración para la API
+│   ├── test_cli.py         # Tests para el CLI
+│   └── test_logic.py       # Tests unitarios para las funciones de lógica
+├── .gitignore              # Archivos a ignorar por Git (.venv, __pycache__, etc.)
+├── .python-version         # (Opcional) Versión de Python fijada por uv
+├── Makefile                # Automatización de comandos (install, test, lint, all)
+├── pyproject.toml          # Configuración del proyecto y dependencias
+├── README.md               # Documentación del proyecto
+└── uv.lock                 # Archivo de bloqueo de versiones exactas
