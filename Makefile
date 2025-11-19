@@ -1,16 +1,15 @@
 install:
-	pip install uv &&\
 	uv sync
 
-test:
-	uv run python -m pytest tests/ -vv --cov=mylib --cov=api --cov=cli 
-
-format:	
-	uv run black mylib/*.py cli/*.py api/*.py
+format:
+	uv run black .
 
 lint:
-	uv run pylint --disable=R,C --ignore-patterns=test_.*\.py mylib/*.py cli/*.py api/*.py 
+	uv run pylint mylib api cli
+
+test:
+	uv run python -m pytest
 
 refactor: format lint
 
-all: install format lint test
+all: install refactor test
