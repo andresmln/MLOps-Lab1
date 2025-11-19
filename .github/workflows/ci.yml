@@ -39,4 +39,4 @@ jobs:
 
     # 7. Ejecutar los Tests
     - name: Test with pytest
-      run: uv run pytest
+      run: uv run -m pytest
